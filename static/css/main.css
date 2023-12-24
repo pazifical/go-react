@@ -23,3 +23,45 @@ nav > a:hover {
     margin: auto;
     padding: 1rem;
 }
+
+.card {
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.input {
+    display: inline-block;
+    padding-right: 1rem;
+}
+
+.input > label {
+    font-weight: bold;
+}
+
+table, td, tr, th {
+    border-collapse: collapse;
+    text-align: left;
+}
+td, th {
+    padding: 0.5rem;
+}
+tr {
+    border-bottom: 1px solid black;
+}
+
+button, input[type="submit"] {
+    border: 2px solid black;
+    color: white;
+    background-color: black;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    transition: 0.25s;
+    cursor: pointer;
+    font-weight: bold;
+}
+button:hover, input[type="submit"]:hover{
+    background-color: white;
+    color: black;
+}

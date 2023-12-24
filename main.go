@@ -39,6 +39,8 @@ func handlePoet(w http.ResponseWriter, r *http.Request) {
 		getPoets(w, r)
 	} else if r.Method == "POST" {
 		addPoet(w, r)
+	} else if r.Method == "DELETE" {
+		deletePoet(w, r)
 	}
 
 }
@@ -64,4 +66,23 @@ func addPoet(w http.ResponseWriter, r *http.Request) {
 	}
 	poets = append(poets, poet)
 	http.Redirect(w, r, "/", http.StatusSeeOther)
+}
+
+func deletePoet(w http.ResponseWriter, r *http.Request) {
+	defer r.Body.Close()
+
+	var poet Poet
+	err := json.NewDecoder(r.Body).Decode(&poet)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	newPoets := make([]Poet, 0)
+	for _, oldPoet := range poets {
+		if oldPoet != poet {
+			newPoets = append(newPoets, oldPoet)
+		}
+	}
+	poets = newPoets
+	w.WriteHeader(200)
 }
